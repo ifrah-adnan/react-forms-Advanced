@@ -11,29 +11,42 @@ import * as yup from "yup";
 // });
 
 const Form = () => {
-    const [isLoading, setIsLoading] = useState(true);
+    // const [isLoading, setIsLoading] = useState(true);
 
-    const { register, handleSubmit, formState, reset } = useForm({
+    const { register, handleSubmit, formState, reset ,isLoading} = useForm({
         mode: "onBlur",
-        // resolver: yupResolver(schema),
-    });
-
-    useEffect(() => {
-        const fetchUser = async () => {
-            setIsLoading(true);
+        defaultValues:async()=>{
             const response = await fetch("https://jsonplaceholder.typicode.com/users/10");
             const user = await response.json();
-            reset({
+            return{
                 fullName: user.name,
                 age: parseInt(Math.random() * 10),
                 email: user.email,
-                country: user.address.city, // Adjusted since country field does not exist in the JSON response
-            });
-            setIsLoading(false);
-        };
+                country: user.address.city, 
 
-        fetchUser();
-    }, [reset]);
+            }
+
+        }
+        
+        // resolver: yupResolver(schema),
+    });
+
+    // useEffect(() => {
+    //     const fetchUser = async () => {
+    //         setIsLoading(true);
+    //         const response = await fetch("https://jsonplaceholder.typicode.com/users/10");
+    //         const user = await response.json();
+    //         reset({
+    //             fullName: user.name,
+    //             age: parseInt(Math.random() * 10),
+    //             email: user.email,
+    //             country: user.address.city, // Adjusted since country field does not exist in the JSON response
+    //         });
+    //         setIsLoading(false);
+    //     };
+
+    //     fetchUser();
+    // }, [reset]);
 
     const { errors, isSubmitted, isValid, isDirty, submitCount } = formState;
 
