@@ -1,5 +1,8 @@
 # React + Vite
 
+***Form.jsx:
+formulaire avec la validation avec 2 methodes yup et register with formstate 
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
