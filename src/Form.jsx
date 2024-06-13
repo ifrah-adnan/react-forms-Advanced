@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 // const schema = yup.object({
@@ -45,7 +44,7 @@ const Form = () => {
     return (
         <>
             {isLoading ? (
-               <div>Loading</div>
+               <div>loading </div>
             ) : (
                 <>
                     {submitCount > 3 ? (
